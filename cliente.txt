@@ -1,0 +1,17 @@
+// esse bloco de código esta se utilizando da técnica de "guards" que é a técnica //que se utiliza na programação que no caso é em C para prevenir de incluir um //arquivo de cabeçalho(ou de biblioteca, no caso, os com a extensão .h), sendo //essencial para evitar quaisquer problemas de compilação  causadas por essas //definições duplicadas de variáveis estruturas funções entre outros formas de //código.
+
+#ifndef CLIENTE_H
+#define CLIENTE_H
+
+typedef struct
+{
+	char nome[100];
+	char cpf[15];
+	char email[100];
+	int idade;
+} Cliente;
+
+int validar_cpf(char *cpf);
+int validar_email(char *email);
+
+#endif

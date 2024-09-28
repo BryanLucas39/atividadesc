@@ -1,0 +1,58 @@
+//A função (validar_cpf) tem como objetivo verificar se um número de CPF //fornecido como entrada está no formato correto e segue as regras de validação //do CPF brasileiro
+#include <regex.h>
+
+int validar_cpf(char *cpf)
+{
+	int i, soma, resto, digito1, digito2;
+	int peso1[9] = {10, 9, 8, 7 , 6, 5, 4, 3, 2}; 
+	int peso2[10] = {11, 10, 9, 8, 7 , 6, 5, 4, 3 , 2};
+
+//remover caracteres não numéricos para verificar se o CPF tem 11 dígitos
+// ... (implementação)
+
+//calcular o primeiro digito verificador 
+
+soma = 0;
+
+for (1= 0; i < 9; i++)
+{
+
+soma += (cpf[i] - '0') * peso1[i];
+
+}
+	resto = soma % 11;
+	if (resto < 2)
+{
+
+	digito1 = 0;
+}
+else
+{
+	digito2 = 11 - resto;
+}
+
+// Verificar se os calculados correspondem aos dígitos informados
+return (digito1 == cpf[9] - '0' && digito2 == cpf[10] - '0');
+}
+
+int validar_email(char *email)
+{
+
+	regex_t regex;
+	int reti;
+	char *pattern =  "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+
+	//compilar a expressão regular
+	reti = regcomp(&regex, pattern, REG_EXTENDED);
+	if (reti)
+{
+	fprintf(stderr, "Regex error\n");
+	return 0;
+}
+	// Executar a expressão regular
+	reti = regexec(&regex, email, 0, NULL, 0);
+	regfree(&regex);
+
+return !reti;
+
+}'

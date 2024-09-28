@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+
+//A função cadastrar_cliente vai funcionar como o coletor dos dados de um cliente 
+//(seu nome, CPF, e-mail e idade) e armazená-los em uma estrutura do tipo //Cliente. Ela garante que os dados do CPF e do e-mail sejam válidos, utilizando //as funções validar_cpf e validar_email.
+
+#include "cliente.h"
+#include "validacao.h"
+
+//Função de cadastro de cliente
+
+void cadastrar_cliente(Cliente *cliente)
+{
+
+	prinf(Digite o nome do cliente abaixo ");
+	fgets(cliente->nome, sizeof(cliente->nome), stdin);
+	cliente->nome[strcspn(cliente->nome, "\n")] = 0; //Remove a nova linha
+
+do
+{
+
+	printf("Digite o cpf do cliente: ");
+	fgets(cliente->cpf[cliente->cpf), stdin);
+	cliente->cpf[strcspn(cliente->cpf, "\n)"]= 0;
+}
+	while (!validar_cpf(cliente->cpf));
+
+do
+{
+
+	printf("Digite o e-mail do cliente: ");
+	fgets(cliente->email, sizeof(cliente->email), stdin);
+	cliente->email[strcspn(cliente->email, "\n")] = 0;
+} while (!validar_email(cliente->email));
+
+	printf("Digite a idade do cliente: ");
+	scanf("%d", &cliente->idade):
+	getchar(); //limpa o buffer do teclado
+}
